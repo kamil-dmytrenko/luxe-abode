@@ -17,6 +17,7 @@ import Cameras from "@/pages/Cameras";
 import Intercom from "@/pages/Intercom";
 import Schedules from "@/pages/Schedules";
 import Automations from "@/pages/Automations";
+import AutomationEdit from "@/pages/AutomationEdit";
 import Settings from "@/pages/Settings";
 import Rooms from "@/pages/Rooms";
 import RoomDetail from "@/pages/RoomDetail";
@@ -47,6 +48,8 @@ const App = () => (
             <Route path="/intercom" element={<Intercom />} />
             <Route path="/schedules" element={<Schedules />} />
             <Route path="/automations" element={<Automations />} />
+            <Route path="/automations/new" element={<AutomationEdit />} />
+            <Route path="/automations/:id" element={<AutomationEdit />} />
             <Route path="/settings" element={<Settings />} />
           </Route>
           <Route path="*" element={<NotFound />} />
