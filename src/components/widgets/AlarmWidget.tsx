@@ -17,7 +17,7 @@ export default function AlarmWidget() {
       </div>
       <div className="mt-4 grid grid-cols-3 gap-2">
         {["Dom", "Noc", "Wyjście"].map((m, i) => (
-          <button key={m} className={`rounded-xl border px-3 py-2 text-xs transition ${i === 0 ? "border-success/40 bg-success/10 text-success" : "border-border text-muted-foreground hover:text-foreground"}`}>{m}</button>
+          <button key={m} onClick={(e) => e.stopPropagation()} className={`rounded-xl border px-3 py-2 text-xs transition ${i === 0 ? "border-success/40 bg-success/10 text-success" : "border-border text-muted-foreground hover:text-foreground"}`}>{m}</button>
         ))}
       </div>
     </div>
