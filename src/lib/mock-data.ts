@@ -73,6 +73,51 @@ export const acs: AC[] = [
   { id: "ac3", name: "Gabinet", room: "Gabinet", on: false, target: 22, fan: "mid", mode: "cool" },
 ];
 
+export type ClimateMode = "auto" | "comfort" | "eco" | "boost" | "off";
+export type ClimateZone = {
+  id: string;
+  room: string;
+  current: number;
+  humidity: number;
+  target: number;
+  mode: ClimateMode;
+  hasUnderfloor: boolean;
+  hasAC: boolean;
+  schedule: { time: string; target: number; label: string }[];
+  notice?: string;
+};
+
+export const climateZones: ClimateZone[] = [
+  { id: "z1", room: "Salon", current: 22.5, humidity: 45, target: 22.0, mode: "auto", hasUnderfloor: true, hasAC: true, schedule: [
+    { time: "06:30", target: 22, label: "Poranek" }, { time: "09:00", target: 21, label: "Dzień" },
+    { time: "17:30", target: 22.5, label: "Wieczór" }, { time: "22:30", target: 20, label: "Noc" },
+  ]},
+  { id: "z2", room: "Kuchnia", current: 23.1, humidity: 52, target: 22.0, mode: "auto", hasUnderfloor: true, hasAC: false, schedule: [
+    { time: "06:30", target: 22, label: "Poranek" }, { time: "09:00", target: 21, label: "Dzień" },
+    { time: "17:30", target: 22, label: "Wieczór" }, { time: "22:30", target: 20, label: "Noc" },
+  ]},
+  { id: "z3", room: "Sypialnia", current: 21.0, humidity: 48, target: 20.0, mode: "eco", hasUnderfloor: true, hasAC: true, schedule: [
+    { time: "06:30", target: 21, label: "Poranek" }, { time: "09:00", target: 19, label: "Dzień" },
+    { time: "21:00", target: 20, label: "Wieczór" }, { time: "23:00", target: 18.5, label: "Noc" },
+  ], notice: "Otwarte okno — wstrzymano grzanie 10 min" },
+  { id: "z4", room: "Łazienka", current: 24.2, humidity: 65, target: 24.0, mode: "comfort", hasUnderfloor: true, hasAC: false, schedule: [
+    { time: "06:00", target: 25, label: "Poranek" }, { time: "09:00", target: 23, label: "Dzień" },
+    { time: "20:00", target: 24, label: "Wieczór" }, { time: "23:00", target: 22, label: "Noc" },
+  ]},
+  { id: "z5", room: "Gabinet", current: 22.0, humidity: 44, target: 22.0, mode: "auto", hasUnderfloor: true, hasAC: true, schedule: [
+    { time: "07:00", target: 22, label: "Poranek" }, { time: "09:00", target: 22, label: "Dzień" },
+    { time: "18:00", target: 21, label: "Wieczór" }, { time: "22:00", target: 19, label: "Noc" },
+  ]},
+  { id: "z6", room: "Pokój dziecka", current: 22.8, humidity: 50, target: 22.0, mode: "auto", hasUnderfloor: true, hasAC: false, schedule: [
+    { time: "06:30", target: 22, label: "Poranek" }, { time: "09:00", target: 21, label: "Dzień" },
+    { time: "19:00", target: 22, label: "Wieczór" }, { time: "21:00", target: 20.5, label: "Noc" },
+  ]},
+  { id: "z7", room: "Garaż", current: 16.4, humidity: 58, target: 15.0, mode: "eco", hasUnderfloor: false, hasAC: false, schedule: [
+    { time: "06:00", target: 15, label: "Poranek" }, { time: "09:00", target: 15, label: "Dzień" },
+    { time: "18:00", target: 15, label: "Wieczór" }, { time: "22:00", target: 14, label: "Noc" },
+  ]},
+];
+
 export type Scene = { id: string; name: string; desc: string; icon: LucideIcon; gradient: string; active?: boolean };
 export const scenes: Scene[] = [
   { id: "s1", name: "Dzień dobry", desc: "Rolety w górę, kawa, łagodne światło", icon: Sun, gradient: "from-amber-400 to-orange-500", active: true },

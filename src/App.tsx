@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -8,7 +8,7 @@ import Login from "@/pages/Login";
 import Dashboard from "@/pages/Dashboard";
 import Lights from "@/pages/Lights";
 import Blinds from "@/pages/Blinds";
-import Heating from "@/pages/Heating";
+
 import Climate from "@/pages/Climate";
 import Scenes from "@/pages/Scenes";
 import Alarm from "@/pages/Alarm";
@@ -39,7 +39,7 @@ const App = () => (
             <Route path="/rooms/:id" element={<RoomDetail />} />
             <Route path="/lights" element={<Lights />} />
             <Route path="/blinds" element={<Blinds />} />
-            <Route path="/heating" element={<Heating />} />
+            <Route path="/heating" element={<Navigate to="/climate" replace />} />
             <Route path="/climate" element={<Climate />} />
             <Route path="/scenes" element={<Scenes />} />
             <Route path="/alarm" element={<Alarm />} />
