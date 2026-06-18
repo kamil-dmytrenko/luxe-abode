@@ -34,7 +34,7 @@ export const WIDGETS: Record<WidgetKey, WidgetMeta> = {
   scenes: { key: "scenes", label: "Sceny", desc: "Szybkie sceny", icon: Sparkles, route: "/scenes", defaultSize: "m", render: () => <ScenesWidget />, gradient: "from-violet-500/40 to-fuchsia-600/20" },
   cameras: { key: "cameras", label: "Kamery", desc: "Podgląd na żywo", icon: Camera, route: "/cameras", defaultSize: "l", render: () => <CamerasWidget />, gradient: "from-slate-500/40 to-zinc-700/20" },
   clock: { key: "clock", label: "Zegar", desc: "Godzina i data", icon: Clock, route: null, defaultSize: "m", render: () => <ClockWidget />, gradient: "from-indigo-500/40 to-blue-600/20" },
-  air: { key: "air", label: "Powietrze", desc: "Jakość powietrza w domu", icon: Leaf, route: null, defaultSize: "m", render: () => <AirWidget />, gradient: "from-emerald-400/40 to-lime-500/20" },
+  air: { key: "air", label: "Powietrze", desc: "Jakość powietrza i wentylacja", icon: Leaf, route: "/ventilation", defaultSize: "m", render: () => <AirWidget />, gradient: "from-emerald-400/40 to-lime-500/20" },
   favorites: { key: "favorites", label: "Ulubione", desc: "Skróty do urządzeń i scen", icon: Star, route: null, defaultSize: "m", render: () => <FavoritesWidget />, gradient: "from-amber-400/40 to-yellow-500/20" },
 };
 
