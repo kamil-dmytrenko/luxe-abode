@@ -205,3 +205,53 @@ export const intercomCalls = [
   { id: "ic3", time: "Wczoraj, 18:40", from: "Brama wjazdowa", status: "answered" as const },
   { id: "ic4", time: "Wczoraj, 12:05", from: "Brama wjazdowa", status: "missed" as const },
 ];
+
+// ============= Ventilation (HRV / Rekuperacja) =============
+
+export type HrvMode = "auto" | "away" | "boost" | "night" | "party" | "off";
+export type HrvProbe = { id: "supply-in" | "exhaust-in" | "supply-out" | "exhaust-out"; label: string; temp: number; humidity: number };
+
+export const hrv = {
+  mode: "auto" as HrvMode,
+  fanSpeed: 45, // %
+  bypass: false, // letni bypass
+  recovery: 86, // sprawność rekuperacji %
+  airflow: 180, // m3/h
+  filterUsage: 62, // %
+  filterDaysLeft: 47,
+  co2Avg: 612,
+  vocAvg: 0.32, // mg/m3
+  energySaved: 4.2, // kWh dzisiaj
+  schedule: [
+    { time: "06:30", mode: "boost" as HrvMode, label: "Poranek" },
+    { time: "09:00", mode: "auto" as HrvMode, label: "Dzień" },
+    { time: "18:00", mode: "auto" as HrvMode, label: "Wieczór" },
+    { time: "22:30", mode: "night" as HrvMode, label: "Noc" },
+  ],
+  probes: [
+    { id: "supply-in", label: "Nawiew (dom)", temp: 21.4, humidity: 42 },
+    { id: "exhaust-in", label: "Wywiew (dom)", temp: 22.6, humidity: 48 },
+    { id: "supply-out", label: "Czerpnia (zewn.)", temp: 6.8, humidity: 78 },
+    { id: "exhaust-out", label: "Wyrzutnia (zewn.)", temp: 9.2, humidity: 71 },
+  ] as HrvProbe[],
+};
+
+export type RoomSensor = {
+  id: string; room: string; co2: number; voc: number; temp: number; humidity: number; pm25?: number;
+};
+export const roomSensors: RoomSensor[] = [
+  { id: "rs1", room: "Salon", co2: 720, voc: 0.41, temp: 22.5, humidity: 45, pm25: 6 },
+  { id: "rs2", room: "Sypialnia", co2: 980, voc: 0.55, temp: 21.0, humidity: 48, pm25: 7 },
+  { id: "rs3", room: "Pokój dziecka", co2: 845, voc: 0.38, temp: 22.8, humidity: 50, pm25: 5 },
+  { id: "rs4", room: "Łazienka", co2: 520, voc: 0.62, temp: 24.2, humidity: 65 },
+  { id: "rs5", room: "WC", co2: 480, voc: 0.71, temp: 22.4, humidity: 58 },
+  { id: "rs6", room: "Siłownia", co2: 1120, voc: 0.48, temp: 20.6, humidity: 55, pm25: 4 },
+  { id: "rs7", room: "Gabinet", co2: 690, voc: 0.34, temp: 22.0, humidity: 44, pm25: 5 },
+];
+
+export const hrvHistory = Array.from({ length: 24 }).map((_, h) => ({
+  hour: `${h}:00`,
+  co2: Math.round(500 + Math.sin((h - 4) / 3) * 120 + (h >= 22 || h <= 6 ? 250 : 0) + Math.random() * 60),
+  voc: +(0.25 + Math.sin((h - 8) / 4) * 0.15 + Math.random() * 0.05).toFixed(2),
+  humidity: Math.round(44 + Math.sin(h / 4) * 6 + Math.random() * 3),
+}));
