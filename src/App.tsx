@@ -10,6 +10,7 @@ import Lights from "@/pages/Lights";
 import Blinds from "@/pages/Blinds";
 
 import Climate from "@/pages/Climate";
+import Ventilation from "@/pages/Ventilation";
 import Scenes from "@/pages/Scenes";
 import Alarm from "@/pages/Alarm";
 import Energy from "@/pages/Energy";
@@ -41,6 +42,7 @@ const App = () => (
             <Route path="/blinds" element={<Blinds />} />
             <Route path="/heating" element={<Navigate to="/climate" replace />} />
             <Route path="/climate" element={<Climate />} />
+            <Route path="/ventilation" element={<Ventilation />} />
             <Route path="/scenes" element={<Scenes />} />
             <Route path="/alarm" element={<Alarm />} />
             <Route path="/energy" element={<Energy />} />

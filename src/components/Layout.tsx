@@ -2,7 +2,7 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 import {
   LayoutDashboard, Lightbulb, Blinds, Thermometer, Sparkles, ShieldCheck,
   Zap, Camera, Bell, CalendarClock, Workflow, Settings as SettingsIcon,
-  Search, Plus, Home,
+  Search, Plus, Home, Wind,
 } from "lucide-react";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -13,6 +13,7 @@ const navItems = [
   { to: "/lights", label: "Światła", icon: Lightbulb },
   { to: "/blinds", label: "Rolety", icon: Blinds },
   { to: "/climate", label: "Klimat", icon: Thermometer },
+  { to: "/ventilation", label: "Wentylacja", icon: Wind },
   { to: "/scenes", label: "Sceny", icon: Sparkles },
   { to: "/alarm", label: "Alarm", icon: ShieldCheck },
   { to: "/energy", label: "Energia", icon: Zap },
